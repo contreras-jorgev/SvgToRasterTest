@@ -4,6 +4,9 @@ namespace SvgToRasterTest
 {
     class Program
     {
+        const string XML_SVG_HEAD = @"<?xml version=""1.0"" encoding=""utf-8""?><!DOCTYPE svg PUBLIC ""-//W3C//DTD SVG 1.1//EN"" ""http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"" >";
+
+
         static void Main(string[] args)
         {
             string svgJohnDoeSignature = @"<svg xmlns=""http://www.w3.org/2000/svg"" version=""1.1"" width=""1025"" height=""341"" style=""display:block"">
@@ -18,9 +21,10 @@ namespace SvgToRasterTest
 <text x=""984.08"" y=""320.54"" fill=""#C2BEBD"" stroke=""#C2BEBD"" stroke-width=""1"" font-family=""arial"" font-size=""40.92"" text-anchor=""end"">1/18/2021</text>
 </g>
 </svg>";
+            int width = 1025; // $TO-DO: compute or get from SVG above.
+            int height = 341; 
 
-            string whiteCanvas = string.Format(
-                "<rect x=\"0\" y=\"0\" width=\"{0}\" height=\"{0}\" style=\"stroke:#FFFFFF; fill: #FFFFFF\"/>", 1025, 341);
+            string whiteCanvas = $"<rect x=\"0\" y=\"0\" width=\"{width}\" height=\"{height}\" style=\"stroke:#FFFFFF; fill: #FFFFFF\"/>";
             int firstPath = svgJohnDoeSignature.IndexOf("<path");
             if (firstPath > 0)
             {
